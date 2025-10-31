@@ -22,7 +22,6 @@ The module also registers **dispatchable functions** for standardized deposit an
 - [Deployment & Initialization](#deployment--initialization)
 - [CLI Usage Examples](#cli-usage-examples)
 - [Security & Permission Model](#security--permission-model)
-- [FAQ](#faq)
 - [License](#license)
 
 ---
