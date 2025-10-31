@@ -8,7 +8,7 @@ The module also registers **dispatchable functions** for standardized deposit an
 > - **Token Symbol:** `RWD`  
 > - **Token Name:** `Rewardy`  
 > - **Decimals:** `8`  
-> - **Initial Supply:** `3_000_000_000_000_000_000 (u128)` (optional)  
+> - **Initial Supply:** `3_000_000_000_000_000_000 (u128)` 
 > - **Metadata:** Includes icon URL and website URL  
 > - **Owner:** Only the **root object owner (deployer address)** can perform sensitive actions such as mint, burn, pause, and ownership transfer
 
