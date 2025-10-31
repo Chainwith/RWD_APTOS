@@ -205,22 +205,6 @@ aptos move run \
 
 ---
 
-## FAQ
-
-**Q1. Why is the function name `set_puased` misspelled?**  
-A: It’s a typo in the source code. If deployed already, it must remain unchanged unless redeployed.
-
-**Q2. Where is the initial supply defined?**  
-A: Inside `primary_fungible_store::create_primary_store_enabled_fungible_asset`, where `option::some<u128>(...)` defines the initial amount.
-
-**Q3. How can users transfer RWD?**  
-A: Use the standard FA transfer between primary stores; this module focuses on administrative (ref-based) functions.
-
-**Q4. Can I modify the token metadata (icon/website)?**  
-A: Modify in source before deployment, or extend via `ExtendRef` logic after deployment.
-
----
-
 ## License
 
 Specify your repository license here. Example:
