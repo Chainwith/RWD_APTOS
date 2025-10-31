@@ -1,5 +1,4 @@
 module rewardy_coin_factory_address::coin_factory {
-    // ---------------------------- Imports ----------------------------
     use std::error;
     use std::signer;
     use std::string::{Self, utf8};
@@ -18,17 +17,11 @@ module rewardy_coin_factory_address::coin_factory {
     use aptos_framework::function_info;
     use aptos_framework::dispatchable_fungible_asset;
 
-    // ---------------------------- Error codes ----------------------------
     const E_NOT_OWNER: u64 = 1;
     const E_PAUSED: u64 = 2;
     const E_SAME_VALUE: u64 = 3;
-
-    // ---------------------------- Constants ----------------------------
-
     const ASSET_SYMBOL: vector<u8> = b"RWD";
     const ASSET_NAME: vector<u8> = b"Rewardy";
-
-    // ---------------------------- Structs ----------------------------
 
     #[resource_group_member(group = aptos_framework::object::ObjectGroup)]
     struct RewardyCoin has key {
@@ -39,7 +32,6 @@ module rewardy_coin_factory_address::coin_factory {
         paused: bool
     }
 
-    // ---------------------------- Initialize ----------------------------
     fun init_module(sender: &signer) {
         assert!(
             @rewardy_coin_factory_address == signer::address_of(sender),
@@ -50,13 +42,13 @@ module rewardy_coin_factory_address::coin_factory {
         primary_fungible_store::create_primary_store_enabled_fungible_asset(
             constructor_ref,
             option::some<u128>(3000000000000000000),
-            utf8(ASSET_NAME), /* name */
-            utf8(ASSET_SYMBOL), /* symbol */
-            8, /* decimals */
+            utf8(ASSET_NAME),
+            utf8(ASSET_SYMBOL),
+            8,
             utf8(
                 b"https://rewardy.s3.ap-northeast-2.amazonaws.com/Rewardy+Coin/front_rwd.png"
-            ), /* icon */
-            utf8(b"https://www.rewardywallet.com/") /* project */
+            ), 
+            utf8(b"https://www.rewardywallet.com/") 
         );
 
         let extend_ref = object::generate_extend_ref(constructor_ref);
@@ -73,7 +65,7 @@ module rewardy_coin_factory_address::coin_factory {
         let deposit =
             function_info::new_function_info(
                 sender,
-                string::utf8(b"coin_factory"), // module name
+                string::utf8(b"coin_factory"),
                 string::utf8(b"deposit")
             );
         let withdraw =
@@ -90,7 +82,6 @@ module rewardy_coin_factory_address::coin_factory {
         );
     }
 
-    // ---------------------------- Main ----------------------------
     #[view]
     public fun coin_address(): address {
         object::create_object_address(&@rewardy_coin_factory_address, ASSET_SYMBOL)
