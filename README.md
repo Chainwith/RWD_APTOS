@@ -29,7 +29,7 @@ The module also registers **dispatchable functions** for standardized deposit an
 
 ## Architecture Overview
 
-```mermaid
+```
 flowchart TD
     A[Module Deployer (rewardy_coin_factory_address)] -->|init_module| B[Create Named Object (ASSET_SYMBOL)]
     B --> C[primary_fungible_store::create_primary_store_enabled_fungible_asset]
